@@ -1,8 +1,9 @@
 import pytest
-from pages import WstyleHomePage, WstyleLoginPage
+from home_page import WstyleHomePage
+from login_page import  WstyleLoginPage    
 
 
-class TestWstyleLoginWithPageObjects:
+class TestWstyleLogin:
     """
     Test login functionality for Wstyle.com.tw using Page Object Model.
     """
@@ -12,6 +13,7 @@ class TestWstyleLoginWithPageObjects:
         """Test complete login flow with element verification and logout."""
         # Navigate to home page and handle popup
         home_page = WstyleHomePage(browser_driver)
+        login_page = WstyleLoginPage(browser_driver)
         home_page.navigate().close_popup()
 
         # Set window size
@@ -21,7 +23,7 @@ class TestWstyleLoginWithPageObjects:
         assert home_page.is_login_button_present()
 
         # Click login button to navigate to login page
-        login_page = home_page.click_login()
+        home_page.click_login()
 
         # Verify login form elements
         assert login_page.get_login_title_text() in ["[Login]", "[登入]"]
@@ -29,10 +31,10 @@ class TestWstyleLoginWithPageObjects:
         assert login_page.get_password_label_text() in ["Password", "密碼 :"]
 
         # Perform login
-        home_page = login_page.login("hamburger", "hamburger")
+        login_page.login("hamburger", "hamburger")
 
-        # Verify login button is still present (logged in state)
-        assert home_page.is_login_button_present()
+        # Verify logout button is still present (logged in state)
+        assert home_page.is_logout_button_present()
 
         # Logout
         home_page.click_logout()
@@ -41,7 +43,7 @@ class TestWstyleLoginWithPageObjects:
         assert home_page.is_login_button_present()
 
 
-class TestWstyleNavigationWithPageObjects:
+class TestWstyleHomePage:
     """
     Test navigation elements for Wstyle.com.tw using Page Object Model.
     """
