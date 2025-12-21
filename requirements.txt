@@ -1,0 +1,20 @@
+# Core dependencies
+pytest==7.4.3
+selenium==4.16.0
+
+# WebDriver management
+webdriver-manager==4.0.1
+
+# Additional pytest plugins
+pytest-html==4.1.1          # HTML report generation
+pytest-xdist==3.5.0          # Parallel test execution
+pytest-timeout==2.2.0        # Test timeout
+pytest-rerunfailures==13.0   # Rerun failed tests
+pytest-cov==4.1.0            # Coverage reporting
+
+# Waiting and explicit conditions
+selenium-wire==5.1.0         # Optional: for network inspection
+
+# Linting and formatting (optional)
+pylint==3.0.3
+black==23.12.1
